@@ -1,0 +1,64 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card card-outline-secondary">
+
+    <div class="card-header">
+      <h3 class="mb-0">Register</h3>
+    </div>
+
+    <!-- <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="card-image-topmb-3 " /> -->
+
+    <div class="card-body">
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+          <label for="firstname">First Name</label>
+          <input type="text" class="form-control" formControlName="firstname"
+            [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+          <div class="invalid-feedback" *ngIf="submitted && f.firstname.errors">
+            <div *ngIf="f.firstname.errors.required">First Name is required!</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastname">Last Name</label>
+          <input type="text" class="form-control" formControlName="lastname"
+            [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+          <div class="invalid-feedback" *ngIf="submitted && f.lastname.errors">
+            <div *ngIf="f.lastname.errors.required">Last Name is required!</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div class="invalid-feedback" *ngIf="submitted && f.email.errors">
+            <div *ngIf="f.email.errors.required">Email is required!</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div class="invalid-feedback" *ngIf="submitted && f.password.errors">
+            <div *ngIf="f.password.errors.required">Password is required!</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Sign Up
+          </button>
+          <a routerLink="../login" class="btn btn-link">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

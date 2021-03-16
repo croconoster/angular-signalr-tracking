@@ -1,0 +1,38 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container">
+      <a href="#" class="navbar-brand">User Tracking App</a>
+
+      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+        <li class="nav-item">
+          <a href="/home" class="nav-link" routerLink="home">Home </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto" *ngIf="!user">
+        <li class="nav-item">
+          <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a href="/login" class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto" *ngIf="user">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link" routerLink="profile">{{ user.firstName }} {{ user.lastName }}</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a href="/admin" class="nav-link" routerLink="admin" >Admin</a>
+        </li>
+        <li class="nav-item">
+          <a href class="nav-link" (click)="logout()">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>

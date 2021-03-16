@@ -1,0 +1,20 @@
+<div class="card mt-4">
+  <div class="card-header">
+    <div class="float-start">
+      <h4>Home</h4>
+    </div>
+    <div class="float-end list-group list-group-horizontal">
+       <h6 class="list-group-item" *ngFor='let data of signalRService.usersData'><i class="bi bi-person-circle"></i> {{data.fullName}}</h6>
+    </div>
+  </div>
+  <div class="card-body">
+      <p>You're logged in with Angular 10 & JWT!!</p>
+      <p>Your role is: <strong>{{user.role}}</strong>.</p>
+      <p>This page can be accessed by <u>all authenticated users</u>.</p>
+      <p class="mb-1">Current user from secure api end point:</p>
+      <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+      <ul *ngIf="userFromApi">
+          <li>{{userFromApi.firstName}} {{userFromApi.lastName}}</li>
+      </ul>
+  </div>
+</div>
